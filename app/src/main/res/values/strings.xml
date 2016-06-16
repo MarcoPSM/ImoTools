@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ImoTools</string>
+    <string name="euroSymbol">€</string>
+    <string name="percentageSymbol">%</string>
+    <string name="IVA">23</string>
+    <string name="commission">5</string>
+</resources>
