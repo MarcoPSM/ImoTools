@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.text.DecimalFormat;
-
-public class MainActivity extends AppCompatActivity {
+public class ValueOfSaleActivity extends AppCompatActivity {
 
     EditText txtValorPretendido;
     EditText txtComissao;
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_value_of_sale);
 
 
     }
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     double tempToTest = x - comissao - ivaComissao;
                     if (tempToTest >= finalValue) {
 
-                        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        final AlertDialog alertDialog = new AlertDialog.Builder(ValueOfSaleActivity.this).create();
 
                         // Setting Dialog Title
                         alertDialog.setTitle("Resultados");
