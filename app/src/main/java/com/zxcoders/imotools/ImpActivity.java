@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,8 @@ public class ImpActivity extends AppCompatActivity {
                    final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
                    alertDialog.setTitle("Resultados:");
                    alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
-                           "\nImposto de Selo: " + seloValue.toString());
+                           "€\nImposto de Selo: " + seloValue.toString() +
+                            "€\nTotal: " + imtValue.add(seloValue).toString()+"€");
                    alertDialog.setIcon(R.mipmap.ic_launcher);
                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                        public void onClick(DialogInterface dialog, int which) {
@@ -85,7 +87,7 @@ public class ImpActivity extends AppCompatActivity {
         });
     }
 
-    private ResultValue getResultValues(BigDecimal imovelValue, String tipoImovel, String location) {
+    private ResultValue getResultValues(BigDecimal value, String tipoImovel, String location) {
         ResultValue reply = new ResultValue();
 
         List<ImpStep> table = new ArrayList<>();
@@ -98,10 +100,14 @@ public class ImpActivity extends AppCompatActivity {
             table = ImpTabels.getIlhasTable(tipoImovel);
         }
 
-
-
-        //TODO um foreach para correr todos os escaloes, e em qual se encaixa, no que for o correcto
-        //fazer as contas e meter um break para nao continuar pq nao vale a pena
+        for (ImpStep step: table) {
+            if(step.getStepInit().compareTo(value) <= 0 && step.getStepEnd().compareTo(value) > 0){
+                //Correct step finded!!!
+                //TODO testar e verificar o k se passa quando apanha 0% de taxa pq deve de dar asneira
+                reply.setSelo(value.multiply(new BigDecimal(0.008)).setScale(2, RoundingMode.HALF_UP));
+                reply.setImp((value.multiply(step.getTx().divide(new BigDecimal(100)))).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
+            }
+        }
 
         return reply;
     }

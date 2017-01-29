@@ -26,10 +26,12 @@ public class ImpTabels {
 
             case "S":
                 //secundaria
+                //TODO carregar valores pela boca
                 break;
 
             case "R":
                 //rustico
+                //TODO carregar valores pela boca
                 break;
 
             default:
@@ -44,14 +46,17 @@ public class ImpTabels {
         switch (tipoImovel){
             case "P":
                 //propria
+                //TODO carregar valores pela boca
                 break;
 
             case "S":
                 //secundaria
+                //TODO carregar valores pela boca
                 break;
 
             case "R":
                 //rustico
+                //TODO carregar valores pela boca
                 break;
 
             default:
