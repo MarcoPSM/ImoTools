@@ -2,16 +2,16 @@ package com.zxcoders.imotools;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImpActivity extends AppCompatActivity {
 
@@ -54,13 +54,16 @@ public class ImpActivity extends AppCompatActivity {
                        tipoImovel = "R";
                    }
 
+                   ResultValue rv = new ResultValue();
+
                    if(rbContinente.isChecked()){
-                       imtValue = ImpTableContinente.getImtValue(imovelValue, tipoImovel);
-                       seloValue = ImpTableContinente.getSeloValue(imovelValue, tipoImovel);
+                        rv = getResultValues(imovelValue, tipoImovel, "C");
                    } else { //There are always one selected
-                       imtValue = ImpTableIlhas.getImtValue(imovelValue, tipoImovel);
-                       seloValue = ImpTableIlhas.getImtSelo(imovelValue, tipoImovel);
+                       rv = getResultValues(imovelValue, tipoImovel, "I");
                    }
+
+                   imtValue = rv.getImp();
+                   seloValue = rv.getSelo();
 
                    final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
                    alertDialog.setTitle("Resultados:");
@@ -80,6 +83,27 @@ public class ImpActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private ResultValue getResultValues(BigDecimal imovelValue, String tipoImovel, String location) {
+        ResultValue reply = new ResultValue();
+
+        List<ImpStep> table = new ArrayList<>();
+        if(location == "C"){
+            //Se for continente usar a tablea do continente
+             table = ImpTabels.getContinenteTable(tipoImovel);
+        }
+        if(location == "I"){
+            //Se for ilhas, i.e. Regioes autonomas
+            table = ImpTabels.getIlhasTable(tipoImovel);
+        }
+
+
+
+        //TODO um foreach para correr todos os escaloes, e em qual se encaixa, no que for o correcto
+        //fazer as contas e meter um break para nao continuar pq nao vale a pena
+
+        return reply;
     }
 
     @Override
