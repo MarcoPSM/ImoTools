@@ -12,7 +12,7 @@ public class ImpTableContinente {
         BigDecimal reply = new BigDecimal(0);
 
 
-        return reply;
+        return imovelValue;
     }
 
     public static BigDecimal getSeloValue(BigDecimal imovelValue, String tipoImovel) {

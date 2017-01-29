@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 public class ImpActivity extends AppCompatActivity {
 
     Button buttonCalcular;
+    EditText textViewValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,46 +34,50 @@ public class ImpActivity extends AppCompatActivity {
                 BigDecimal seloValue = new BigDecimal(0);
                 String tipoImovel = "";
 
-                //TODO ir buscar a porra do valor a textview
-                BigDecimal imovelValue = new BigDecimal(0);
+                String valueStr = textViewValue.getText().toString();
 
-                RadioButton rbContinente = (RadioButton) findViewById(R.id.radioButtonContinente);
+               try{
+                   BigDecimal imovelValue = new BigDecimal(valueStr);
+                   RadioButton rbContinente = (RadioButton) findViewById(R.id.radioButtonContinente);
 
-                RadioButton rbHabitacaoPropria = (RadioButton) findViewById(R.id.radioButtonHabitacaoPropria);
-                RadioButton rbHabitacaoSecundaria = (RadioButton) findViewById(R.id.radioButtonHabitacaoSecundaria);
-                RadioButton rbRustico = (RadioButton) findViewById(R.id.radioButtonPrediosRusticos);
+                   RadioButton rbHabitacaoPropria = (RadioButton) findViewById(R.id.radioButtonHabitacaoPropria);
+                   RadioButton rbHabitacaoSecundaria = (RadioButton) findViewById(R.id.radioButtonHabitacaoSecundaria);
+                   RadioButton rbRustico = (RadioButton) findViewById(R.id.radioButtonPrediosRusticos);
 
-                if(rbHabitacaoPropria.isChecked()){
-                    tipoImovel = "P";
-                }
-                if(rbHabitacaoSecundaria.isChecked()){
-                    tipoImovel = "S";
-                }
-                if(rbRustico.isChecked()){
-                    tipoImovel = "R";
-                }
+                   if(rbHabitacaoPropria.isChecked()){
+                       tipoImovel = "P";
+                   }
+                   if(rbHabitacaoSecundaria.isChecked()){
+                       tipoImovel = "S";
+                   }
+                   if(rbRustico.isChecked()){
+                       tipoImovel = "R";
+                   }
 
+                   if(rbContinente.isChecked()){
+                       imtValue = ImpTableContinente.getImtValue(imovelValue, tipoImovel);
+                       seloValue = ImpTableContinente.getSeloValue(imovelValue, tipoImovel);
+                   } else { //There are always one selected
+                       imtValue = ImpTableIlhas.getImtValue(imovelValue, tipoImovel);
+                       seloValue = ImpTableIlhas.getImtSelo(imovelValue, tipoImovel);
+                   }
 
-                if(rbContinente.isChecked()){
-                    imtValue = ImpTableContinente.getImtValue(imovelValue, tipoImovel);
-                    seloValue = ImpTableContinente.getSeloValue(imovelValue, tipoImovel);
-                } else { //There are always one selected
-                    imtValue = ImpTableIlhas.getImtValue(imovelValue, tipoImovel);
-                    seloValue = ImpTableIlhas.getImtSelo(imovelValue, tipoImovel);
-                }
+                   final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
+                   alertDialog.setTitle("Resultados:");
+                   alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
+                           "\nImposto de Selo: " + seloValue.toString());
+                   alertDialog.setIcon(R.mipmap.ic_launcher);
+                   alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                       public void onClick(DialogInterface dialog, int which) {
+                           alertDialog.dismiss();
+                       }
+                   });
+                   alertDialog.show();
 
+               } catch (Exception e){
+                   e.printStackTrace();
+               }
 
-                final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
-                alertDialog.setTitle("Resultados:");
-                alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
-                "\nImposto de Selo: " + seloValue.toString());
-                alertDialog.setIcon(R.mipmap.ic_launcher);
-                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        alertDialog.dismiss();
-                    }
-                });
-                alertDialog.show();
             }
         });
     }
@@ -81,6 +86,8 @@ public class ImpActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         buttonCalcular = (Button) findViewById(R.id.buttonCalcular);
+        textViewValue = (EditText) findViewById(R.id.editTextValue);
+
         buttonEvent();
     }
 }

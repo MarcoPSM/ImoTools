@@ -73,24 +73,34 @@
             android:checked="false" />
     </RadioGroup>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:hint="@string/euroSymbol"
+        android:text="Valor do Imóvel"
+        android:id="@+id/textViewValue"
+        android:layout_above="@+id/editTextValue"
+        android:layout_centerHorizontal="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:hint="@string/euroSymbol"
-        android:id="@+id/editText"
+        android:id="@+id/editTextValue"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="134dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valor do Imóvel"
-        android:id="@+id/textViewValue"
-        android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true" />
+
+
+
+
+
+
 
     <Button
         android:layout_width="wrap_content"
