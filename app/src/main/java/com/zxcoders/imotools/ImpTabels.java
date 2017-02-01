@@ -26,12 +26,17 @@ public class ImpTabels {
 
             case "S":
                 //secundaria
-                //TODO carregar valores pela boca
+                reply.add(new ImpStep(new BigDecimal(0), new BigDecimal(92407), new BigDecimal(1), new BigDecimal(0)));
+                reply.add(new ImpStep(new BigDecimal(92407), new BigDecimal(126403), new BigDecimal(2), new BigDecimal(924.07)));
+                reply.add(new ImpStep(new BigDecimal(126403), new BigDecimal(172348), new BigDecimal(5), new BigDecimal(4716.16)));
+                reply.add(new ImpStep(new BigDecimal(172348), new BigDecimal(287213), new BigDecimal(7), new BigDecimal(8163.12)));
+                reply.add(new ImpStep(new BigDecimal(287213), new BigDecimal(550836), new BigDecimal(8), new BigDecimal(11035.25)));
+                reply.add(new ImpStep(new BigDecimal(550836), null, new BigDecimal(6), new BigDecimal(0)));
                 break;
 
             case "R":
                 //rustico
-                //TODO carregar valores pela boca
+                reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(5), new BigDecimal(0)));
                 break;
 
             default:
@@ -47,16 +52,34 @@ public class ImpTabels {
             case "P":
                 //propria
                 //TODO carregar valores pela boca
+/*                Regioes autonomas
+
+                Habitação própria e permandente:
+                até 115.509,00 €	0%	0,00 €
+                mais de 115.509,00 € até 158.004,00 €	2%	2.310,18 €
+                mais de 158.004,00 € até 215.435,00 €	5%	7.050,29 €
+                mais de 215.435,00 € até 359.016,00 €	7%	11.358,99 €
+                mais de 359.016,00 € até 717.904,00 €	8%	14.949,15 €
+                mais de 717.904,00 €	6%	0,00 € */
                 break;
 
             case "S":
                 //secundaria
                 //TODO carregar valores pela boca
+                /*
+                habitação secundaria ou arrendamento
+                até 115.509,00 €	1%	0,00 €
+                mais de 115.509,00 € até 158.004,00 €	2%	1.155,09 €
+                mais de 158.004,00 € até 215.435,00 €	5%	5.895,20 €
+                mais de 215.435,00 € até 359.016,00 €	7%	10.203,90 €
+                mais de 359.016,00 € até 688.545,00 €	8%	13.794,06 €
+                mais de 688.545,00 €	6%	0,00 €
+                 */
                 break;
 
             case "R":
                 //rustico
-                //TODO carregar valores pela boca
+                reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(5), new BigDecimal(0)));
                 break;
 
             default:
