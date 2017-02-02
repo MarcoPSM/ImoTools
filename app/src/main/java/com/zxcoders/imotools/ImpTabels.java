@@ -39,6 +39,11 @@ public class ImpTabels {
                 reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(5), new BigDecimal(0)));
                 break;
 
+            case "O":
+                //Outros predios urbanos
+                reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(6.5), new BigDecimal(0)));
+                break;
+
             default:
                 break;
         }
@@ -51,7 +56,7 @@ public class ImpTabels {
         switch (tipoImovel){
             case "P":
                 //propria
-                //TODO carregar valores pela boca
+
 /*                Regioes autonomas
 
                 Habitação própria e permandente:
@@ -61,11 +66,19 @@ public class ImpTabels {
                 mais de 215.435,00 € até 359.016,00 €	7%	11.358,99 €
                 mais de 359.016,00 € até 717.904,00 €	8%	14.949,15 €
                 mais de 717.904,00 €	6%	0,00 € */
-                break;
+
+            reply.add(new ImpStep(new BigDecimal(0), new BigDecimal(115509), new BigDecimal(0), new BigDecimal(0)));
+            reply.add(new ImpStep(new BigDecimal(115509), new BigDecimal(158004), new BigDecimal(2), new BigDecimal(2310.18)));
+            reply.add(new ImpStep(new BigDecimal(158004), new BigDecimal(215435), new BigDecimal(5), new BigDecimal(7050.29)));
+            reply.add(new ImpStep(new BigDecimal(215435), new BigDecimal(359016), new BigDecimal(7), new BigDecimal(11358.99)));
+            reply.add(new ImpStep(new BigDecimal(359016), new BigDecimal(717904), new BigDecimal(8), new BigDecimal(14949.15)));
+            reply.add(new ImpStep(new BigDecimal(717904), null, new BigDecimal(6), new BigDecimal(0)));
+            break;
+
 
             case "S":
                 //secundaria
-                //TODO carregar valores pela boca
+
                 /*
                 habitação secundaria ou arrendamento
                 até 115.509,00 €	1%	0,00 €
@@ -75,11 +88,22 @@ public class ImpTabels {
                 mais de 359.016,00 € até 688.545,00 €	8%	13.794,06 €
                 mais de 688.545,00 €	6%	0,00 €
                  */
+                reply.add(new ImpStep(new BigDecimal(0), new BigDecimal(115509), new BigDecimal(1), new BigDecimal(0)));
+                reply.add(new ImpStep(new BigDecimal(115509), new BigDecimal(158004), new BigDecimal(2), new BigDecimal(1155.09)));
+                reply.add(new ImpStep(new BigDecimal(158004), new BigDecimal(215435), new BigDecimal(5), new BigDecimal(5895.20)));
+                reply.add(new ImpStep(new BigDecimal(215435), new BigDecimal(359016), new BigDecimal(7), new BigDecimal(10203.90)));
+                reply.add(new ImpStep(new BigDecimal(359016), new BigDecimal(688545), new BigDecimal(8), new BigDecimal(13794.06)));
+                reply.add(new ImpStep(new BigDecimal(688545), null, new BigDecimal(6), new BigDecimal(0)));
                 break;
 
             case "R":
                 //rustico
                 reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(5), new BigDecimal(0)));
+                break;
+
+            case "O":
+                //Outros predios urbanos
+                reply.add(new ImpStep(new BigDecimal(0), null, new BigDecimal(6.5), new BigDecimal(0)));
                 break;
 
             default:

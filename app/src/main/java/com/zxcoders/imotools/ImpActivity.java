@@ -37,51 +37,55 @@ public class ImpActivity extends AppCompatActivity {
 
                 String valueStr = textViewValue.getText().toString();
 
-               try{
-                   BigDecimal imovelValue = new BigDecimal(valueStr);
-                   RadioButton rbContinente = (RadioButton) findViewById(R.id.radioButtonContinente);
+                try {
+                    BigDecimal imovelValue = new BigDecimal(valueStr);
+                    RadioButton rbContinente = (RadioButton) findViewById(R.id.radioButtonContinente);
 
-                   RadioButton rbHabitacaoPropria = (RadioButton) findViewById(R.id.radioButtonHabitacaoPropria);
-                   RadioButton rbHabitacaoSecundaria = (RadioButton) findViewById(R.id.radioButtonHabitacaoSecundaria);
-                   RadioButton rbRustico = (RadioButton) findViewById(R.id.radioButtonPrediosRusticos);
+                    RadioButton rbHabitacaoPropria = (RadioButton) findViewById(R.id.radioButtonHabitacaoPropria);
+                    RadioButton rbHabitacaoSecundaria = (RadioButton) findViewById(R.id.radioButtonHabitacaoSecundaria);
+                    RadioButton rbRustico = (RadioButton) findViewById(R.id.radioButtonPrediosRusticos);
+                    RadioButton rbUrbanos = (RadioButton) findViewById(R.id.radioButtonPrediosUrbanos);
 
-                   if(rbHabitacaoPropria.isChecked()){
-                       tipoImovel = "P";
-                   }
-                   if(rbHabitacaoSecundaria.isChecked()){
-                       tipoImovel = "S";
-                   }
-                   if(rbRustico.isChecked()){
-                       tipoImovel = "R";
-                   }
+                    if (rbHabitacaoPropria.isChecked()) {
+                        tipoImovel = "P";
+                    }
+                    if (rbHabitacaoSecundaria.isChecked()) {
+                        tipoImovel = "S";
+                    }
+                    if (rbRustico.isChecked()) {
+                        tipoImovel = "R";
+                    }
+                    if (rbUrbanos.isChecked()) {
+                        tipoImovel = "O";
+                    }
 
-                   ResultValue rv = new ResultValue();
+                    ResultValue rv = new ResultValue();
 
-                   if(rbContinente.isChecked()){
+                    if (rbContinente.isChecked()) {
                         rv = getResultValues(imovelValue, tipoImovel, "C");
-                   } else { //There are always one selected
-                       rv = getResultValues(imovelValue, tipoImovel, "I");
-                   }
+                    } else { //There are always one selected
+                        rv = getResultValues(imovelValue, tipoImovel, "I");
+                    }
 
-                   imtValue = rv.getImp();
-                   seloValue = rv.getSelo();
+                    imtValue = rv.getImp();
+                    seloValue = rv.getSelo();
 
-                   final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
-                   alertDialog.setTitle("Resultados:");
-                   alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
-                           "€\nImposto de Selo: " + seloValue.toString() +
-                            "€\nTotal: " + imtValue.add(seloValue).toString()+"€");
-                   alertDialog.setIcon(R.mipmap.ic_launcher);
-                   alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                       public void onClick(DialogInterface dialog, int which) {
-                           alertDialog.dismiss();
-                       }
-                   });
-                   alertDialog.show();
+                    final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
+                    alertDialog.setTitle("Resultados:");
+                    alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
+                            "€\nImposto de Selo: " + seloValue.toString() +
+                            "€\nTotal: " + imtValue.add(seloValue).toString() + "€");
+                    alertDialog.setIcon(R.mipmap.ic_launcher);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
 
-               } catch (Exception e){
-                   e.printStackTrace();
-               }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         });

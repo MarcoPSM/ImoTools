@@ -37,11 +37,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="v.0.2 beta  sdw  er fe r ev ev e ve v e c c w dcw c wc wc w cw c d c d    vf vv swg i gwi fgie gvie"
+        android:text="v.1.1 beta  app do consultor"
         android:id="@+id/wellcomTextBox"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/buttonValueOfSale"
         android:layout_alignEnd="@+id/buttonValueOfSale" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="powered by ZXCoders"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
