@@ -91,7 +91,7 @@ public class ImpActivity extends AppCompatActivity {
         });
     }
 
-    private ResultValue getResultValues(BigDecimal value, String tipoImovel, String location) {
+    public ResultValue getResultValues(BigDecimal value, String tipoImovel, String location) {
         ResultValue reply = new ResultValue();
 
         List<ImpStep> table = new ArrayList<>();
@@ -105,13 +105,23 @@ public class ImpActivity extends AppCompatActivity {
         }
 
         for (ImpStep step: table) {
-            if(step.getStepInit().compareTo(value) <= 0 && step.getStepEnd().compareTo(value) > 0){
-                //Correct step finded!!!
-                //TODO testar e verificar o k se passa quando apanha 0% de taxa pq deve de dar asneira
-                reply.setSelo(value.multiply(new BigDecimal(0.008)).setScale(2, RoundingMode.HALF_UP));
-                reply.setImp((value.multiply(step.getTx().divide(new BigDecimal(100)))).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
+
+
+            BigDecimal txMulti = step.getTx().divide(new BigDecimal(100));
+
+
+            if(step.getStepEnd() == null){
+                //LAST step is the correct!!!
+                reply.setImp((value.multiply(txMulti)).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
+            }else{
+                if(step.getStepInit().compareTo(value) <= 0 && step.getStepEnd().compareTo(value) > 0){
+                    //Correct step finded!!!
+                    reply.setImp((value.multiply(txMulti)).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
+                }
             }
+
         }
+        reply.setSelo(value.multiply(new BigDecimal(0.008)).setScale(2, RoundingMode.HALF_UP));
 
         return reply;
     }
