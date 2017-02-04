@@ -36,10 +36,10 @@ public class ImpCalculos {
     @Test
     public void PortugalContinentalHabitaçãoPropriaStep3() throws Exception {
         ImpActivity ia = new ImpActivity();
-        ResultValue reply = ia.getResultValues(new BigDecimal(97000), "P", "C");
-        assertEquals(new BigDecimal(1509.77).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getImp());
-        assertEquals(new BigDecimal(1144.00).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getSelo());
-        assertEquals(new BigDecimal(2653.77).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getSelo().add(reply.getImp()));
+        ResultValue reply = ia.getResultValues(new BigDecimal(145000), "P", "C");
+        assertEquals(new BigDecimal(1609.77).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getImp());
+        assertEquals(new BigDecimal(1160.00).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getSelo());
+        assertEquals(new BigDecimal(2769.77).setScale(2, BigDecimal.ROUND_HALF_UP), reply.getSelo().add(reply.getImp()));
     }
 
     //TODO Fazer os testes para o resto dos escalões e para todas as combinações possiveis e imaginarias
