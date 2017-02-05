@@ -55,8 +55,8 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/txtValorPretendido"
-        android:layout_alignEnd="@+id/txtValorPretendido" />
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
@@ -66,6 +66,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/comissao"
-        android:layout_alignEnd="@+id/comissao" />
+        android:layout_alignRight="@+id/txtValorPretendido"
+        android:layout_alignEnd="@+id/txtValorPretendido" />
 </RelativeLayout>

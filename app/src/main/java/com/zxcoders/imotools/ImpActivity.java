@@ -115,7 +115,7 @@ public class ImpActivity extends AppCompatActivity {
                 reply.setImp((value.multiply(txMulti)).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
                 break;
             }else{
-                if(step.getStepInit().compareTo(value) <= 0 && step.getStepEnd().compareTo(value) > 0){
+                if(step.getStepInit().compareTo(value) < 0 && step.getStepEnd().compareTo(value) >= 0){
                     //Correct step finded!!!
                     reply.setImp((value.multiply(txMulti)).subtract(step.getParcelaAbate()).setScale(2,RoundingMode.HALF_UP));
                     break;
