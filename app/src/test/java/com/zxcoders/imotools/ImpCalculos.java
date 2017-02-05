@@ -44,7 +44,4 @@ public class ImpCalculos {
 
     //TODO Fazer os testes para o resto dos escalões e para todas as combinações possiveis e imaginarias
 
-
-
-
 }
