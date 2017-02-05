@@ -72,6 +72,8 @@ public class ImpActivity extends AppCompatActivity {
 
                     final AlertDialog alertDialog = new AlertDialog.Builder(ImpActivity.this).create();
                     alertDialog.setTitle("Resultados:");
+                    imtValue = imtValue.setScale(2, RoundingMode.CEILING);
+                    seloValue = seloValue.setScale(2, RoundingMode.CEILING);
                     alertDialog.setMessage("IMT a pagar: " + imtValue.toString() +
                             "€\nImposto de Selo: " + seloValue.toString() +
                             "€\nTotal: " + imtValue.add(seloValue).toString() + "€");
