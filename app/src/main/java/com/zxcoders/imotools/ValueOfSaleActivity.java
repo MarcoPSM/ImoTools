@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class ValueOfSaleActivity extends AppCompatActivity {
 
     EditText txtValorPretendido;
@@ -47,7 +50,7 @@ public class ValueOfSaleActivity extends AppCompatActivity {
                         alertDialog.setTitle("Resultados");
 
                         // Setting Dialog Message
-                        alertDialog.setMessage("Valor a pedir: \n" + x + "\n\nValor da comissão sem IVA\n" + comissao + "\n\nValor da comissão com IVA\n" + (comissao + ivaComissao) + "\n\nValor final:\n" + (x - (comissao + ivaComissao)));
+                        alertDialog.setMessage("Valor a pedir: \n" + x + "\n\nValor da comissão sem IVA\n" + new BigDecimal(comissao).setScale(2, RoundingMode.CEILING) + "\n\nValor da comissão com IVA\n" + new BigDecimal(comissao + ivaComissao).setScale(2, RoundingMode.CEILING) + "\n\nValor final:\n" + new BigDecimal((x - (comissao + ivaComissao))).setScale(2,RoundingMode.CEILING));
 
                         // Setting Icon to Dialog
                         alertDialog.setIcon(R.mipmap.ic_launcher);
