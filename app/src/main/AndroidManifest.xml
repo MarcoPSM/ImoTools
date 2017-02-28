@@ -9,16 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainMenuActivity">
+        <activity android:name="pt.zxcoders.imotools.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ValueOfSaleActivity" />
+        <activity android:name="pt.zxcoders.imotools.ValueOfSaleActivity" />
 
-        <activity android:name=".ImpActivity" />
+        <activity android:name="pt.zxcoders.imotools.ImpActivity" />
 
     </application>
 

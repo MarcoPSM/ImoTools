@@ -1,4 +1,4 @@
-package com.zxcoders.imotools;
+package pt.zxcoders.imotools;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

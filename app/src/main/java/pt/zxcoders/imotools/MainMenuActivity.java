@@ -1,11 +1,11 @@
-package com.zxcoders.imotools;
+package pt.zxcoders.imotools;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.support.v7.widget.Toolbar;
+
+import com.zxcoders.imotools.R;
 
 public class MainMenuActivity extends AppCompatActivity {
 

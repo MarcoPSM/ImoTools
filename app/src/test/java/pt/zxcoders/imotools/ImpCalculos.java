@@ -1,8 +1,11 @@
-package com.zxcoders.imotools;
+package pt.zxcoders.imotools;
 
 import org.junit.Test;
 
 import java.math.BigDecimal;
+
+import pt.zxcoders.imotools.ImpActivity;
+import pt.zxcoders.imotools.ResultValue;
 
 import static org.junit.Assert.assertEquals;
 

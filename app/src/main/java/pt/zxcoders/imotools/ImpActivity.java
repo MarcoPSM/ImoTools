@@ -1,4 +1,4 @@
-package com.zxcoders.imotools;
+package pt.zxcoders.imotools;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+
+import com.zxcoders.imotools.R;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
