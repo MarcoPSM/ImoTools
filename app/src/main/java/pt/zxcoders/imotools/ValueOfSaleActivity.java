@@ -36,44 +36,47 @@ public class ValueOfSaleActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                try{
+                    Integer finalValue = Integer.valueOf(txtValorPretendido.getText().toString());
+                    double percentage = Double.valueOf(txtComissao.getText().toString());
 
-                Integer finalValue = Integer.valueOf(txtValorPretendido.getText().toString());
-                double percentage = Double.valueOf(txtComissao.getText().toString());
+                    int init = (int) (finalValue * (1 + (percentage / 100)));
+                    double end = init + 5 * (init - finalValue);
 
-                int init = (int) (finalValue * (1 + (percentage / 100)));
-                double end = init + 5 * (init - finalValue);
+                    for (int x = init; x <= end; x++) {
+                        Double comissao = x * (percentage / 100);
+                        double ivaComissao = comissao * 0.23;
 
-                for (int x = init; x <= end; x++) {
-                    Double comissao = x * (percentage / 100);
-                    double ivaComissao = comissao * 0.23;
+                        double tempToTest = x - comissao - ivaComissao;
+                        if (tempToTest >= finalValue) {
 
-                    double tempToTest = x - comissao - ivaComissao;
-                    if (tempToTest >= finalValue) {
+                            final AlertDialog alertDialog = new AlertDialog.Builder(ValueOfSaleActivity.this).create();
 
-                        final AlertDialog alertDialog = new AlertDialog.Builder(ValueOfSaleActivity.this).create();
+                            // Setting Dialog Title
+                            alertDialog.setTitle("Resultados");
 
-                        // Setting Dialog Title
-                        alertDialog.setTitle("Resultados");
+                            // Setting Dialog Message
+                            alertDialog.setMessage("Valor a pedir: \n" + x + "\n\nValor da comissão sem IVA\n" + new BigDecimal(comissao).setScale(2, RoundingMode.CEILING) + "\n\nValor da comissão com IVA\n" + new BigDecimal(comissao + ivaComissao).setScale(2, RoundingMode.CEILING) + "\n\nValor final:\n" + new BigDecimal((x - (comissao + ivaComissao))).setScale(2,RoundingMode.CEILING));
 
-                        // Setting Dialog Message
-                        alertDialog.setMessage("Valor a pedir: \n" + x + "\n\nValor da comissão sem IVA\n" + new BigDecimal(comissao).setScale(2, RoundingMode.CEILING) + "\n\nValor da comissão com IVA\n" + new BigDecimal(comissao + ivaComissao).setScale(2, RoundingMode.CEILING) + "\n\nValor final:\n" + new BigDecimal((x - (comissao + ivaComissao))).setScale(2,RoundingMode.CEILING));
+                            // Setting Icon to Dialog
+                            alertDialog.setIcon(R.mipmap.ic_launcher);
 
-                        // Setting Icon to Dialog
-                        alertDialog.setIcon(R.mipmap.ic_launcher);
+                            // Setting OK Button
+                            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Write your code here to execute after dialog closed
+                                    alertDialog.dismiss();
+                                }
+                            });
 
-                        // Setting OK Button
-                        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Write your code here to execute after dialog closed
-                                alertDialog.dismiss();
-                            }
-                        });
+                            // Showing Alert Message
+                            alertDialog.show();
 
-                        // Showing Alert Message
-                        alertDialog.show();
-
-                        break;
+                            break;
+                        }
                     }
+                } catch (Exception e){
+
                 }
 
             }
