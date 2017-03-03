@@ -67,6 +67,16 @@
         android:id="@+id/textViewDisclaimer"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bug/Sugestões"
+        android:id="@+id/reportBtn"
+        android:onClick="openActivityReport"
+        android:layout_above="@+id/textViewDisclaimer"
+        android:layout_alignRight="@+id/textViewDisclaimer"
+        android:layout_alignEnd="@+id/textViewDisclaimer" />
 </RelativeLayout>
 
 <!-- BACKUP

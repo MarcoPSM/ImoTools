@@ -33,4 +33,10 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ImpActivity.class);
         startActivity(intent);
     }
+
+    /** Called when the user clicks the button report */
+    public void openActivityReport(View view) {
+        Intent intent = new Intent(this, ActivityReport.class);
+        startActivity(intent);
+    }
 }

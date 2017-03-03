@@ -4,4 +4,5 @@
     <string name="percentageSymbol">%</string>
     <string name="IVA">23</string>
     <string name="commission">5</string>
+    <string name="title_activity_activity_report">ActivityReport</string>
 </resources>
